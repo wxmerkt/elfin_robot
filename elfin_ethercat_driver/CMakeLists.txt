@@ -111,8 +111,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
  INCLUDE_DIRS include
  LIBRARIES elfin_ethercat_driver
- CATKIN_DEPENDS controller_manager diagnostic_updater hardware_interface joint_limits_interface roscpp rospy sensor_msgs soem tf trajectory_msgs transmission_interface
- DEPENDS system_lib
+ CATKIN_DEPENDS controller_manager diagnostic_updater hardware_interface joint_limits_interface roscpp rospy sensor_msgs soem tf trajectory_msgs transmission_interface elfin_robot_msgs
 )
 
 ###########
