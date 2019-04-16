@@ -58,10 +58,10 @@ ElfinBasicAPI::ElfinBasicAPI(moveit::planning_interface::MoveGroupInterface *gro
 
     switch_controller_client_=root_nh_.serviceClient<controller_manager_msgs::SwitchController>("/controller_manager/switch_controller");
     list_controllers_client_=root_nh_.serviceClient<controller_manager_msgs::ListControllers>("/controller_manager/list_controllers");
-    get_motion_state_client_=root_nh_.serviceClient<std_srvs::SetBool>("/elfin_ros_control/elfin/get_motion_state");
-    get_pos_align_state_client_=root_nh_.serviceClient<std_srvs::SetBool>("/elfin_ros_control/elfin/get_pos_align_state");
-    raw_enable_robot_client_=root_nh_.serviceClient<std_srvs::SetBool>("/elfin_ros_control/elfin/enable_robot");
-    raw_disable_robot_client_=root_nh_.serviceClient<std_srvs::SetBool>("/elfin_ros_control/elfin/disable_robot");
+    get_motion_state_client_=root_nh_.serviceClient<std_srvs::SetBool>("/elfin/get_motion_state");
+    get_pos_align_state_client_=root_nh_.serviceClient<std_srvs::SetBool>("/elfin/get_pos_align_state");
+    raw_enable_robot_client_=root_nh_.serviceClient<std_srvs::SetBool>("/elfin/enable_robot");
+    raw_disable_robot_client_=root_nh_.serviceClient<std_srvs::SetBool>("/elfin/disable_robot");
 
     ref_link_name_publisher_=local_nh_.advertise<std_msgs::String>("reference_link_name", 1, true);
     end_link_name_publisher_=local_nh_.advertise<std_msgs::String>("end_link_name", 1, true);
@@ -368,6 +368,8 @@ bool ElfinBasicAPI::startElfinCtrlr(std_srvs::SetBool::Response &resp)
     controller_manager_msgs::SwitchController::Response switch_controller_response;
     switch_controller_request.start_controllers.clear();
     switch_controller_request.start_controllers.push_back(elfin_controller_name_);
+    switch_controller_request.start_controllers.push_back("ridgeback_velocity_controller");
+    switch_controller_request.start_controllers.push_back("joint_state_controller");
     switch_controller_request.stop_controllers.clear();
     switch_controller_request.strictness=switch_controller_request.STRICT;
 

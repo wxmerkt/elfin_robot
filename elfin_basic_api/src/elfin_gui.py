@@ -73,7 +73,7 @@ class MyFrame(wx.Frame):
         self.group=moveit_commander.MoveGroupCommander('elfin_arm')
 
         self.controller_ns='elfin_arm_controller/'
-        self.elfin_driver_ns='elfin_ros_control/elfin/'
+        self.elfin_driver_ns='elfin/'
         
         self.elfin_basic_api_ns='elfin_basic_api/'
         

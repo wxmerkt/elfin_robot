@@ -1,9 +1,14 @@
 <launch>
 
+  <group ns="ada">
   <node name="elfin_basic_api" pkg="elfin_basic_api" type="elfin_basic_api_node" output="screen">
     <param name="octomap_resolution" value="0.1"/>
+    <!-- <remap from="robot_description" to="/ada/robot_description"/> -->
   </node>
   
-  <node name="elfin_gui" pkg="elfin_basic_api" type="elfin_gui.py" respawn="true" output="screen" />
+  <node name="elfin_gui" pkg="elfin_basic_api" type="elfin_gui.py" respawn="true" output="screen">
+    <!-- <remap from="robot_description" to="/ada/robot_description"/> -->
+  </node>
+  </group>
 
 </launch>

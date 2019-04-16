@@ -117,7 +117,6 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES elfin_basic_api
   CATKIN_DEPENDS moveit_core moveit_ros_planning moveit_ros_planning_interface roscpp rospy tf tf_conversions
-  DEPENDS system_lib
 )
 
 ###########
